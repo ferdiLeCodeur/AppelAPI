@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}page {{ numPage }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="album py-5" id="france">
+        <div class="container">
+            <h1 class="mb-5">Test API</h1>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for data in pageDatas  %}
+                    <div class="col">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Titre: {{ data.id }} </h5>
+                            </div>
+                            <h6 class="card-footer bg-warning text-dark mx-2 rounded-pill">{{ data.title }}</h6>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <nav aria-label="Page navigation example   ">
+        <ul class="pagination justify-content-center">
+            {% if (numPage > 1 ) %}
+                <li class="page-item">
+                    <a class="page-link" href={{ numPage -1 }} aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+            {% for n in 1..5 %}
+                {% if n == numPage %}
+                    <li class="page-item active">
+                {% else %}
+                    <li class="page-item">
+                {% endif %}
+                         <a class="page-link" href="http://127.0.0.1:8000/page/{{ n }}">{{ n }}</a>
+                    </li>
+            {% endfor %}
+            {% if (numPage < 10) %}
+                <li class="page-item">
+                    <a class="page-link" href={{ numPage +1 }} aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}

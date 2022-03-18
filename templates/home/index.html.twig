@@ -8,22 +8,20 @@
         <div class="container">
             <h1 class="mb-5">Test API</h1>
 
+            {% set nb = data|length /20 %}
+
+
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
                 {% for i in 0..10 %}
-
-                <div class="col">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Titre {{data[i].id}}</h5>
-                            <p class="card-text"></p>
+                    <div class="col">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Titre {{data[i].id}}</h5>
+                            </div>
+                            <h6 class="card-footer bg-warning text-dark mx-2 rounded-pill">{{ data[i].title }}</h6>
                         </div>
-                        <h6 class="card-footer bg-warning text-dark mx-2 rounded-pill">{{ data[i].title }}</h6>
                     </div>
-                </div>
-
                 {% endfor %}
-
             </div>
         </div>
     </div>
